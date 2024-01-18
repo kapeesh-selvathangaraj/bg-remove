@@ -1,5 +1,6 @@
 import streamlit as st
 from PIL import Image
+!pip install rembg
 from rembg import remove
 from io import BytesIO
 import subprocess
