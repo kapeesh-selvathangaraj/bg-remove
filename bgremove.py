@@ -3,8 +3,23 @@ from PIL import Image
 import subprocess
 import sys
 
-# Install rembg
-subprocess.check_call([sys.executable, "-m", "pip", "install", "rembg"])
+try:
+    # Install rembg
+    result = subprocess.run([sys.executable, "-m", "pip", "install", "rembg"], capture_output=True, text=True)
+    print(result.stdout)
+    print(result.stderr)
+
+    # Check if the installation was successful
+    result.check_returncode()
+
+    # Now you can import rembg
+    from rembg import remove
+
+except subprocess.CalledProcessError as e:
+    print(f"Error while installing rembg: {e}")
+except Exception as e:
+    print(f"An unexpected error occurred: {e}")
+
 
 from rembg import remove
 from io import BytesIO
