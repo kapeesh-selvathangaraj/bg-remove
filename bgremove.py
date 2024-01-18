@@ -1,10 +1,13 @@
 import streamlit as st
 from PIL import Image
-!pip install rembg
+import subprocess
+import sys
+
+# Install rembg
+subprocess.check_call([sys.executable, "-m", "pip", "install", "rembg"])
+
 from rembg import remove
 from io import BytesIO
-import subprocess
-subprocess.run(["pip", "install", "rembg"])
 
 def removebg(img):
     # Convert the uploaded file to bytes
